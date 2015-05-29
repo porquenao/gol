@@ -5,7 +5,6 @@ import android.util.Log;
 
 import org.mockito.Mock;
 
-import mobi.porquenao.gol.rule.BuildDebugRule;
 import mobi.porquenao.gol.test.MockInstrumentationTestCase;
 import mobi.porquenao.gol.writer.LogCatWriter;
 
@@ -33,10 +32,10 @@ public class GolTest extends MockInstrumentationTestCase {
         mGol.addWriter(mWriterMock);
     }
 
-    public void testInit() {
+    public void testStarters() {
         Gol gol = new Gol();
-        assertThat(gol.getRules()).isNotEmpty();
-        assertThat(gol.getRules().get(0)).isInstanceOf(BuildDebugRule.class);
+        assertThat(gol.getErrorHandlers()).isEmpty();
+        assertThat(gol.getRules()).isEmpty();
         assertThat(gol.getWriters()).isNotEmpty();
         assertThat(gol.getWriters().get(0)).isInstanceOf(LogCatWriter.class);
     }

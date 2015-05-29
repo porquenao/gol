@@ -7,7 +7,6 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-import mobi.porquenao.gol.rule.BuildDebugRule;
 import mobi.porquenao.gol.writer.LogCatWriter;
 
 public class Gol {
@@ -18,11 +17,7 @@ public class Gol {
     private String mDelimiter = " : ";
 
     private List<ErrorHandler> mErrorHandlers = new ArrayList<>();
-
-    private List<Rule> mRules = new ArrayList<Rule>() {{
-        add(new BuildDebugRule());
-    }};
-
+    private List<Rule> mRules = new ArrayList<>();
     private List<Writer> mWriters = new ArrayList<Writer>() {{
         add(new LogCatWriter());
     }};
