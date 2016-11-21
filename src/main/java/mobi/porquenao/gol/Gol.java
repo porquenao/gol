@@ -1,7 +1,6 @@
 package mobi.porquenao.gol;
 
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -39,8 +38,8 @@ public class Gol {
     // Public API
 
     public void write(int priority, @NonNull Object... objects) {
-        for (Writer writter : mWriters) {
-            writter.write(priority, mTag, TextUtils.join(mDelimiter, objects));
+        for (Writer writer : mWriters) {
+            writer.write(priority, mTag, join(mDelimiter, objects));
         }
     }
 
@@ -89,6 +88,22 @@ public class Gol {
             isLoggable = rule.isLoggable(priority, mTag) && isLoggable;
         }
         return isLoggable;
+    }
+
+    // Internal
+
+    private String join(CharSequence delimiter, Object[] objects) {
+        StringBuilder stringBuilder = new StringBuilder();
+        boolean firstTime = true;
+        for (Object object : objects) {
+            if (firstTime) {
+                firstTime = false;
+            } else {
+                stringBuilder.append(delimiter);
+            }
+            stringBuilder.append(object);
+        }
+        return stringBuilder.toString();
     }
 
     // Getters & Setters
